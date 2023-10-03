@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchPostRequestStarted,
-  fetchPostSuccess,
-  fetchPostfailure,
-} from "../redux/action/postActions.js";
+import {fetchPost} from "../redux/action/postActions.js"
 
 const Post=()=>{
 
@@ -16,20 +12,22 @@ const Post=()=>{
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPostRequestStarted());
+    // dispatch(fetchPostRequestStarted());
 
-    async function getData() {
-      try {
-        const result = await axios.get(
-          "https://gauravgitacc.github.io/postAppData/posts.json"
-        );
-        dispatch(fetchPostSuccess(result.data));
-      } catch (error) {
-        dispatch(fetchPostfailure(error.message));
-      }
-    }
+    // async function getData() {
+    //   try {
+    //     const result = await axios.get(
+    //       "https://gauravgitacc.github.io/postAppData/posts.json"
+    //     );
+    //     dispatch(fetchPostSuccess(result.data));
+    //   } catch (error) {
+    //     dispatch(fetchPostfailure(error.message));
+    //   }
+    // }
 
-    getData();
+    // getData();
+
+    dispatch(fetchPost());
   }, [dispatch]);
 
 
@@ -49,4 +47,5 @@ const Post=()=>{
         </div>
     )
 }
+
 export default Post;
